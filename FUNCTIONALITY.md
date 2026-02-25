@@ -15,11 +15,3 @@
 ## Etape 3 - difficile
 - Système de gestion des users
 #### L'utilisateur pourra supprimer sont compte et modifier ces informations
-
----
----
-
-# Route 
-- Main page avec les posts
-- Une page de création et de modification de posts
-- Une page de gestion des users
