@@ -1,21 +1,39 @@
 <script setup>
+import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 
+let is_authentificated
+
+if (JSON.parse(localStorage.getItem('is_authentificated'))) {
+    is_authentificated = ref(JSON.parse(localStorage.getItem('is_authentificated')))
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header class="position-fixed top-0 left-0 w-100">
+    <nav class="d-flex justify-content-between m-auto p-3 navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between w-100">
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/">Accueil</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/post">Ajouter</RouterLink>
+              </li>
+              <li v-if="is_authentificated" class="nav-item">
+                <RouterLink class="nav-link" to="/profile/1">Profile</RouterLink>
+              </li>
+              <li v-if="!is_authentificated" class="nav-item">
+                <RouterLink class="nav-link" to="/log/logup">S'inscrire</RouterLink>
+              </li>
+              <li v-if="!is_authentificated"  class="nav-item">
+                <RouterLink class="nav-link" to="/log/login">Se connecter</RouterLink>
+              </li>
+          </ul>
+        </div>
+      </div> 
+    </nav>
   </header>
 
   <RouterView />

@@ -1,12 +1,12 @@
 # Liste des fonctionnalitées
 ## Etape 1 - Facile
-- Crud -> create, read, update, delete
+- Crud -> create, read, update, delete -> fait
 - Système de like
 ---
 #### L'utilisateur doit au minimum pouvoir poster des images avec éventuellement un texte descriptif, avec la possibilité de liker ou disliker. Celui ayant crée le post doit pouvoir le supprimer et le modifier. Les autres utilisateur pourront seulement lire le post
 ---
 ## Etape 2 - Moyen
-- Gérer la possibilité d'ajouter du code
+- Gérer la possibilité d'ajouter du code -> fait
 - Système de filtre et de tri
 - Gérer pagination
 ---
