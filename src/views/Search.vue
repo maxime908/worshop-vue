@@ -5,8 +5,12 @@
 
 <template>
     <main class="d-flex flex-column gap-5">
-        <input type="text" class="form-control" name="search" id="search" v-model="storeDuplication.input" placeholder="Rechercher...">
-        
+        <div  class="d-flex flex-column gap-2">
+            <input type="text" class="form-control" name="search" id="search" v-model="storeDuplication.input" placeholder="Rechercher...">
+
+            <input type="text" class="form-control" name="search_by_categorie" id="search_by_categorie" v-model="storeDuplication.input_cat" placeholder="Rechercher par categorie...">
+        </div>
+            
         <div v-for="item in search">
             <Home 
                 :id="item.id" 

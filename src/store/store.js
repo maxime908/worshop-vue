@@ -1,4 +1,4 @@
-import { reactify, useStorage } from "@vueuse/core";
+import { containsProp, reactify, useStorage } from "@vueuse/core";
 import { computed, reactive } from "vue";
 
 // const up = 
@@ -33,6 +33,9 @@ import { computed, reactive } from "vue";
 //         </g>
 //     </svg>
 // `
+
+const params = new URLSearchParams(window.location.search)
+const url = new URL(location);
 
 export const users = useStorage(
     'users',
@@ -207,10 +210,34 @@ export const removeParams = () => {
 // Le mettre dans un nouveau dossier search et dans le fichier search 
 export const storeDuplication = reactive({
     input: "",
+    input_cat: "",
     store: store.value
 })
 
 // Le mettre dans un nouveau dossier search et dans le fichier search 
 export const search = computed(() => {
-    return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.text.toLowerCase() === storeDuplication.input || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
+    if (storeDuplication.input !== "") {
+        storeDuplication.input_cat = ""
+
+        return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.text.toLowerCase() === storeDuplication.input || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
+    }
+
+    if (storeDuplication.input_cat !== "") {
+        storeDuplication.input = ""
+
+        url.searchParams.set("tab", storeDuplication.input_cat);
+        history.pushState({}, "", url);
+
+        let tag = storeDuplication.input_cat
+
+        return storeDuplication.store.filter((t) => {
+            for (let i = 0; i < t.tag.length; i++) {
+                if (t.tag[i].toLowerCase() === tag.toLowerCase()) {
+                    return true;
+                }
+            }
+        })
+    }
+
+    return storeDuplication.store
 })

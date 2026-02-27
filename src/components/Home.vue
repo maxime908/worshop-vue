@@ -92,7 +92,7 @@
                 <i v-else class="bi bi-clipboard2-fill position-absolute right-10px top-5px cursor-pointer"></i>
             </div>
             <div class="d-flex gap-2">
-                <router-link :to="'/search?tab=' + tag" v-for="tag in postTag" class="cursor-pointer btn p-0">
+                <router-link :to="'/search?tab=' + tag.replace('#', '')" v-for="tag in postTag" class="cursor-pointer btn p-0">
                     {{ tag }}
                 </router-link>
             </div>
