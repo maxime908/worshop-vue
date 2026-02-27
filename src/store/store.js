@@ -69,6 +69,7 @@ export const store = useStorage(
             dislikes: 0,
             like: false,
             dislike: false,
+            tag: ["siu", "siu"],
         },
         {
             id: 1,
@@ -80,13 +81,14 @@ export const store = useStorage(
             dislikes: 0,
             like: false,
             dislike: false,
+            tag: ["siu", "siu2"],
         },
     ]
 )
 
-export const addPost = (url, description, code) => {
+export const addPost = (url, description, code, tag) => {
     console.log("siu")
-    if (description && url && code) {
+    if (description && url && code && tag) {
         const id = store.value.length;
         store.value.push({
             id: id,
@@ -98,6 +100,7 @@ export const addPost = (url, description, code) => {
             dislikes: 0,
             like: false,
             dislike: false,
+            tag: tag,
         })
         window.location.href = "/";
     }
@@ -195,5 +198,5 @@ export const storeDuplication = reactive({
 })
 
 export const search = computed(() => {
-    return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
+    return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.text.toLowerCase() === storeDuplication.input || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
 })
