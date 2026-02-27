@@ -38,6 +38,14 @@
                     <label for="email">Email :</label>
                     <input v-show="params.updateInfo" v-model="user.email" id="email"></input>
                     <span v-show="!params.updateInfo">{{ user.email }}</span>
+
+                    <label for="fistName">Prénom :</label>
+                    <input v-show="params.updateInfo" v-model="user.firstName" id="fistName"></input>
+                    <span v-show="!params.updateInfo">{{ user.firstName }}</span>
+
+                    <label for="lastName">Nom :</label>
+                    <input v-show="params.updateInfo" v-model="user.lastName" id="lastName"></input>
+                    <span v-show="!params.updateInfo">{{ user.lastName }}</span>
                 </div>
                 <button class="btn btn-danger" @click="deleteAccount(id_of_user)">Supprimer le compte</button>
                 <button v-show="params.updateInfo" class="btn btn-primary" @click="removeParams()">Retour</button>

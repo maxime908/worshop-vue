@@ -35,3 +35,15 @@ main, form {
 .top-5px {
   top: 5px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.info_user {
+  max-width: 100px;
+}
+
+.info_user span {
+  word-break: break-all;
+}

@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <main>
+    <main class="d-flex flex-column gap-5">
         <input type="text" class="form-control" name="search" id="search" v-model="storeDuplication.input" placeholder="Rechercher...">
         
         <div v-for="item in search">

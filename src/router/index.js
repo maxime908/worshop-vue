@@ -77,7 +77,7 @@ const router = createRouter({
       beforeEnter: (to, from, next) => {
         if (localStorage.getItem("is_authentificated")) {
           localStorage.removeItem("is_authentificated");
-          next({ name: 'login' });
+          window.location.href = "/log/login"
         }
       },
     },

@@ -1,7 +1,7 @@
 <script>
     import 'highlight.js/lib/common';
     import hljsVuePlugin from "@highlightjs/vue-plugin";
-    import { dislike, like } from '@/store/store';
+    import { dislike, like, userInfo } from '@/store/store';
     import { ref } from 'vue';
 
     import { useClipboard } from '@vueuse/core'
@@ -64,32 +64,38 @@
 </script>
 
 <template>
-    <ul class="d-flex flex-column gap-3">
-        <div>
-            {{ description }}
+    <ul class="d-flex gap-5 align-items-start p-0">
+        <div class="d-flex flex-column gap-4 align-items-center info_user">
+            <span>
+                {{ userInfo(id_of_user).firstName }}
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            </svg>
         </div>
-        <img v-if="img !== null" :src="img" alt="img" class="w-50 object-fit-cover">
-        <div class="d-flex justify-content-between position-relative">
-            <highlightjs class="w-100"
-                v-if="code !== null"
-                :code="code"
-            />
-            <span class="position-absolute right-10px top-5px" v-if="!copied" @click="copy(code)"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clipboard2" viewBox="0 0 16 16">
-                <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1z"/>
-                <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5"/>
-            </svg></span>
-            <span v-else class="position-absolute right-10px top-5px"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clipboard2-fill" viewBox="0 0 16 16">
-                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
-                <path d="M3.5 1h.585A1.5 1.5 0 0 0 4 1.5V2a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 12 2v-.5q-.001-.264-.085-.5h.585A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1"/>
-            </svg></span>
-        </div>
-        <div class="d-flex gap-3">
-            <span id="like" @click="like(id, bool = !likeBool)">Like(s): {{ likes }}</span>
-            <span id="dislike" @click="dislike(id, bool = !dislikeBool)">Dislike(s): {{ dislikes }}</span>
-        </div>
-        <div v-if="id_user === id_of_user" class="d-flex gap-3">
-            <a class="btn btn-primary" :href="'/post/update/' + id">Modifier</a>
-            <a class="btn btn-danger" :href="'/delete/' + id">Supprimer</a>
+
+        <div class="d-flex flex-column w-100 gap-3">
+            <img :src="img" :alt="img" class="w-50 object-fit-cover">
+            <div class="d-flex justify-content-between position-relative">
+                <highlightjs class="w-100"
+                    v-if="code !== null"
+                    :code="code"
+                />
+                <i class="bi bi-clipboard2 position-absolute right-10px top-5px cursor-pointer" v-if="!copied" @click="copy(code)"></i>
+                <i v-else class="bi bi-clipboard2-fill position-absolute right-10px top-5px cursor-pointer"></i>
+            </div>
+            <div>
+                {{ description }}
+            </div>
+            <div class="d-flex gap-3">
+                <span id="like" @click="like(id, bool = !likeBool)">Like(s): {{ likes }}</span>
+                <span id="dislike" @click="dislike(id, bool = !dislikeBool)">Dislike(s): {{ dislikes }}</span>
+            </div>
+            <div v-if="id_user === id_of_user" class="d-flex gap-3">
+                <a class="btn btn-primary" :href="'/post/update/' + id">Modifier</a>
+                <a class="btn btn-danger" :href="'/delete/' + id">Supprimer</a>
+            </div>
         </div>
     </ul>
 </template>

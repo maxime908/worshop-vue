@@ -39,12 +39,16 @@ export const users = useStorage(
     [
         {
             id: 0,
+            firstName: "Maxime",
+            lastName: "DREZET",
             email: "drezetmaxime67@gmail.com",
             password: "moi1",
             is_authentificated: false,
         },
         {
             id: 1,
+            firstName: "Maxime",
+            lastName: "DREZET",
             email: "moi@gmail.com",
             password: "moi2",
             is_authentificated: false,
@@ -140,8 +144,8 @@ export const dislike = (id, bool) => {
     storedData.dislike = bool
 }
 
-export const addUser = (email, password) => {
-    if (email && password) {
+export const addUser = (email, password, firstName, lastName) => {
+    if (email && password && firstName && lastName) {
         const find = users.value.find((t) => t.email === email)
         if (find) {
             return;
@@ -150,6 +154,8 @@ export const addUser = (email, password) => {
         const id = users.value.length;
         users.value.push({
             id: id,
+            firstName: firstName,
+            lastName: lastName,
             email: email,
             password: password,
             is_authentificated: false,
@@ -189,5 +195,5 @@ export const storeDuplication = reactive({
 })
 
 export const search = computed(() => {
-    return storeDuplication.store.filter((t) => t.text.includes(storeDuplication.input) || t.code.includes(storeDuplication.input))
+    return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
 })
