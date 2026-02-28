@@ -25,7 +25,7 @@
             if (!route.params.id) {
                 code.value += "    ";
             } else {
-                post.code.value += "    ";
+                post.value.code += "    ";
             }
         }
     }
