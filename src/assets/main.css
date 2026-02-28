@@ -118,6 +118,22 @@ main, form {
   min-width: 300px;
 }
 
+@media screen and (max-width: 1000px) {
+  .container div:first-child {
+    flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+    .column {
+      flex-direction: column !important;
+    }
+
+    .w-responsive-100 {
+      width: 100%;
+    }
+}
+
 @media screen and (max-width: 800px) {
     ul {
       flex-direction: column;

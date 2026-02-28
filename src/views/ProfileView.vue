@@ -29,7 +29,7 @@
 <template>
     <main class="d-flex justify-content-center align-items-center vh-100">
         <div class="container">
-            <div class="row gutters">
+            <div class="d-flex gap-4">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="card h-100">
                         <div class="card-body">
@@ -51,26 +51,26 @@
                 <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="row gutters">
+                            <div class="row gutters p-3">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <h6 class="mb-3 text-primary">Personal Details</h6>
                                 </div>
                                 <div class="d-flex flex-column gap-4">
-                                    <div class="d-flex gap-3">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="d-flex gap-3 column">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 w-responsive-100">
                                             <div class="form-group">
                                                 <label for="lastName">Nom</label>
                                                 <input type="text" class="form-control" id="lastName" v-model="user.lastName">
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 w-responsive-100">
                                             <div class="form-group">
                                                 <label for="firstName">Prénom</label>
                                                 <input type="text" class="form-control" id="firstName" v-model="user.firstName">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 w-responsive-100">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" class="form-control" id="email" v-model="user.email">
