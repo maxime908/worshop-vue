@@ -7,9 +7,9 @@
 body {
   -webkit-user-select: none;
   user-select: none;
-  margin-top: 20px;
+  /* margin-top: 20px;
   color: #bcd0f7;
-  background: #1A233A;
+  background: #1A233A; */
 }
 
 .left-0 {
@@ -95,16 +95,16 @@ main, form {
     text-align: center;
 }
 
-.card {
+/* .card {
     background: #272E48;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
-}
+} */
 
-.form-control {
+/* .form-control {
     border: 1px solid #596280;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -112,4 +112,22 @@ main, form {
     font-size: .825rem;
     background: #1A233A;
     color: #bcd0f7;
+} */
+
+.code, img {
+  min-width: 300px;
+}
+
+@media screen and (max-width: 800px) {
+    ul {
+      flex-direction: column;
+    }
+
+    ul div:first-child {
+      margin: auto;
+    }
+
+    main, form {
+      padding: 100px 16px !important;
+    }
 }

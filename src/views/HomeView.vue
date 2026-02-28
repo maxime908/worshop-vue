@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, stop } from 'vue';
+import { computed, ref, stop, watchEffect } from 'vue';
 import Home from '../components/Home.vue'
 import { store } from '../store/store';
 

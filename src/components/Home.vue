@@ -83,7 +83,7 @@
             <a :href="img" class="fit-content">
                 <img :src="img" :alt="img" class="w-100 object-fit-cover">
             </a>
-            <div v-if="code !== ''" class="d-flex justify-content-between position-relative">
+            <div v-if="code !== ''" class="d-flex justify-content-between position-relative code">
                 <highlightjs class="w-100"
                     v-if="code !== null"
                     :code="code"
@@ -91,7 +91,7 @@
                 <i class="bi bi-clipboard2 position-absolute right-10px top-5px cursor-pointer" v-if="!copied" @click="copy(code)"></i>
                 <i v-else class="bi bi-clipboard2-fill position-absolute right-10px top-5px cursor-pointer"></i>
             </div>
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 flex-wrap">
                 <a :href="'/search?tab=' + tag.replace('#', '')" v-for="tag in postTag" class="cursor-pointer btn p-0">
                     {{ tag }}
                 </a>
