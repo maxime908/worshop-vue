@@ -210,19 +210,25 @@ export const removeParams = () => {
 // Le mettre dans un nouveau dossier search et dans le fichier search 
 export const storeDuplication = reactive({
     input: "",
-    input_cat: "#",
+    input_cat: params.get("tab"),
     store: store.value
 })
 
 // Le mettre dans un nouveau dossier search et dans le fichier search 
 export const search = computed(() => {
-    if (storeDuplication.input !== "") {
+    if (storeDuplication.input !== "" && storeDuplication.input_cat !== "") { 
+        storeDuplication.input = ""
+        storeDuplication.input_cat = ""
+    }
+
+    if (storeDuplication.input !== "")  {
         storeDuplication.input_cat = ""
 
         return storeDuplication.store.filter((t) => t.text.toLowerCase().includes(storeDuplication.input.toLowerCase()) || t.text.toLowerCase() === storeDuplication.input || t.code.toLowerCase().includes(storeDuplication.input.toLowerCase()))
     }
 
-    if (storeDuplication.input_cat !== "#") {
+    if (storeDuplication.input_cat !== "") {
+        console.log("siu")
         storeDuplication.input = ""
 
         url.searchParams.set("tab", storeDuplication.input_cat);
@@ -232,7 +238,7 @@ export const search = computed(() => {
 
         return storeDuplication.store.filter((t) => {
             for (let i = 0; i < t.tag.length; i++) {
-                if (t.tag[i].toLowerCase() === tag.toLowerCase()) {
+                if (t.tag[i].toLowerCase() === "#" + tag.toLowerCase()) {
                     return true;
                 }
             }

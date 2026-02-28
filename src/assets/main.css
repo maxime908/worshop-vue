@@ -52,3 +52,7 @@ main, form {
 .fit-content {
   width: fit-content;
 }
+
+.border {
+  border-radius: 0 !important;
+}
