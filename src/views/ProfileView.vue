@@ -77,6 +77,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="btn-user">
+                                    <a href="/logout" class="btn btn-primary">Se deconnecter</a>
+                                </div>
                             </div>
                         </div>
                     </div>

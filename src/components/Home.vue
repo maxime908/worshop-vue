@@ -2,7 +2,7 @@
     import 'highlight.js/lib/common';
     import hljsVuePlugin from "@highlightjs/vue-plugin";
     import { dislike, like, userInfo } from '@/store/store';
-    import { ref, watchEffect } from 'vue';
+    import { onMounted, ref, watchEffect } from 'vue';
 
     import { useClipboard } from '@vueuse/core'
 
@@ -65,6 +65,21 @@
 
     const source = ref('Hello')
     const { text, copy, copied, isSupported } = useClipboard({ source })
+
+
+    onMounted(() => {
+        document.querySelectorAll(".code").forEach((element) => {
+            const code = element.querySelector("code").classList[1];
+            const lang = element.querySelector(".lang");
+
+            if (code) {
+                lang.innerHTML = code
+                lang.setAttribute("href", `search?tab=${code}`)
+            } else {
+                lang.style.display = "none";
+            }
+        })
+    })
 </script>
 
 <template>
@@ -93,8 +108,11 @@
                     v-if="code !== null"
                     :code="code"
                 />
-                <i class="bi bi-clipboard2 position-absolute right-10px top-5px cursor-pointer" v-if="!copied" @click="copy(code)"></i>
-                <i v-else class="bi bi-clipboard2-fill position-absolute right-10px top-5px cursor-pointer"></i>
+                <div class="position-absolute right-10px top-5px d-flex gap-3 align-items-center">
+                    <a href="#" class="lang btn btn-secondary"></a>
+                    <i class="bi bi-clipboard2 cursor-pointer" v-if="!copied" @click="copy(code)"></i>
+                    <i v-else class="bi bi-clipboard2-fill cursor-pointer"></i>
+                </div>
             </div>
             <div>
                 {{ description }}

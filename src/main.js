@@ -11,7 +11,6 @@ import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/github-dark-dimmed.css'
 import 'highlight.js/lib/common';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
-import { gsap } from "gsap";
 
 const app = createApp(App)
 

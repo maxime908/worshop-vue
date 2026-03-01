@@ -140,7 +140,7 @@ main, form {
 } */
 
 .line {
-  padding-top: 25px;
+  padding-top: 40px;
   position: absolute;
   left: 20px;
   line-height: 22.5px;
@@ -166,7 +166,7 @@ code, .line {
 }
 
 code {
-  padding: 25px 0 !important;
+  padding: 40px 0 !important;
   padding-right: 25px !important;
 }
 
@@ -206,6 +206,12 @@ input:focus::placeholder {
 
 button {
   white-space: nowrap;
+}
+
+.btn-user {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 1000px) {

@@ -186,11 +186,6 @@ export const deleteAccount = (id) => {
     window.location.href = "/log/login";
 }
 
-// Le mettre dans un nouveau dossier user et dans le fichier recup user 
-export const removeParams = () => {
-    history.back()
-}
-
 // Le mettre dans un nouveau dossier search et dans le fichier search 
 export const storeDuplication = reactive({
     input: "",
