@@ -192,11 +192,11 @@ pre {
   border-color: #596280;
 }
 
-input::placeholder {
+.form-control::placeholder {
   color: white !important;
 }
 
-input:focus::placeholder {
+.form-control:focus::placeholder {
   color: black !important;
 }
 
